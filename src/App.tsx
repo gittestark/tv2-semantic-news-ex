@@ -5,8 +5,9 @@ import { EmptyState } from '@/components/EmptyState'
 import { LoadingState } from '@/components/LoadingState'
 import { ArticleDrawer } from '@/components/ArticleDrawer'
 import { InsightsPanel } from '@/components/InsightsPanel'
+import { HelpDialog } from '@/components/HelpDialog'
 import { Alert, AlertDescription } from '@/components/ui/alert'
-import { Warning, MagnifyingGlass, Lightbulb } from '@phosphor-icons/react'
+import { Warning, MagnifyingGlass, Lightbulb, ClockCounterClockwise } from '@phosphor-icons/react'
 import { searchArticles } from '@/lib/api'
 import type { SearchResult, SearchInsights } from '@/lib/types'
 import { Toaster } from '@/components/ui/sonner'
@@ -96,30 +97,38 @@ function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="flex items-center gap-3 mb-3">
-                <motion.div
-                  animate={{ 
-                    scale: [1, 1.05, 1],
-                    rotate: [0, 2, -2, 0]
-                  }}
-                  transition={{ 
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                >
-                  <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center shadow-md">
-                    <MagnifyingGlass size={26} weight="bold" className="text-white" />
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-3">
+                    <motion.div
+                      animate={{ 
+                        scale: [1, 1.05, 1],
+                        rotate: [0, 2, -2, 0]
+                      }}
+                      transition={{ 
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center shadow-md">
+                        <ClockCounterClockwise size={26} weight="bold" className="text-white" />
+                      </div>
+                    </motion.div>
+                    <div>
+                      <h1 className="font-display text-3xl md:text-5xl font-bold text-foreground tracking-tight leading-tight">
+                        TV 2 Arkivsøgning
+                      </h1>
+                      <p className="text-muted-foreground text-sm md:text-base mt-1.5 font-medium">
+                        Find tidligere dækning, undgå dobbeltarbejde og identificer nye vinkler
+                      </p>
+                    </div>
                   </div>
-                </motion.div>
-                <h1 className="font-display text-3xl md:text-5xl font-bold text-foreground tracking-tight">
-                  TV 2 Semantic News Explorer
-                </h1>
+                </div>
+                <div className="flex-shrink-0 pt-1">
+                  <HelpDialog />
+                </div>
               </div>
-              <p className="text-muted-foreground text-sm md:text-base uppercase tracking-wider font-semibold flex items-center gap-2 pl-[60px]">
-                <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                AI-Powered Content Discovery
-              </p>
             </motion.div>
             
             <SearchBar onSearch={handleSearch} isLoading={isLoading} />
@@ -233,7 +242,7 @@ function App() {
         <footer className="border-t border-border py-10 bg-muted/30">
           <div className="container mx-auto px-6 md:px-12">
             <p className="text-sm text-muted-foreground text-center font-medium">
-              Prototype med fiktive data • Klar til integration med AWS Bedrock Knowledge Base
+              UX-prototype med fiktive data • Demonstrerer intelligent arkivsøgning til journalister
             </p>
           </div>
         </footer>

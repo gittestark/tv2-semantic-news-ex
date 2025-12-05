@@ -1,9 +1,9 @@
-# TV 2 Semantic News Explorer
+# TV 2 Arkivsøgning
 
-A UX prototype for TV 2 journalists to search and analyze previous news coverage using AI-powered semantic search and journalism-focused insights. Built with fictional Danish news data to demonstrate real-world workflows.
+A UX prototype for TV 2 journalists to search and analyze previous news coverage. Built with fictional Danish news data to demonstrate real-world workflows for finding previous coverage, avoiding duplicate work, and identifying new story angles.
 
 **Experience Qualities**:
-1. **Intelligent** - The interface should feel smart and responsive, surfacing relevant results through semantic understanding rather than simple keyword matching
+1. **Clear** - The interface should immediately communicate its purpose and value to journalists without technical jargon
 2. **Focused** - Clean, distraction-free design that keeps attention on the search experience and discovered content
 3. **Professional** - Conveys trust and authority appropriate for a news organization's internal tool
 
@@ -53,6 +53,13 @@ This is a search-focused tool with form input, results display, article detail v
 - **Trigger**: User submits query
 - **Progression**: Query submitted → Relevance calculated → Articles ranked → Top results returned with scores
 - **Success criteria**: Relevant results, appropriate relevance scores, fast response time
+
+### Help Documentation
+- **Functionality**: Interactive help dialog explaining the tool's purpose, use cases, and search tips
+- **Purpose**: Onboard journalists quickly and clarify the tool's value without requiring external documentation
+- **Trigger**: Click "Hjælp" button in header
+- **Progression**: Click help button → Dialog opens → Read sections (What it does, When to use, Search tips) → Close dialog → Return to search
+- **Success criteria**: Clear explanations, practical examples, easy to scan and understand
 
 ## Edge Case Handling
 

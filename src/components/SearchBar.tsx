@@ -37,7 +37,7 @@ export function SearchBar({ onSearch, isLoading }: SearchBarProps) {
             onChange={(e) => setQuery(e.target.value)}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
-            placeholder="Stil et spørgsmål eller søg efter nyheder..."
+            placeholder="Hvad vil du undersøge i tidligere dækning? F.eks. 'Hvad har vi skrevet om...'"
             className="w-full pl-14 pr-6 py-7 text-base h-auto shadow-md border-2 border-border focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20 transition-all duration-200 bg-card rounded-lg font-normal"
             disabled={isLoading}
             maxLength={500}
