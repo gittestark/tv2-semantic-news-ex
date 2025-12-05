@@ -18,7 +18,7 @@ export function EmptyState({ hasSearched, query }: EmptyStateProps) {
       transition={{ duration: 0.8 }}
       className="flex flex-col items-center justify-center py-24 px-6 text-center"
     >
-      <div className="mb-8 text-muted-foreground/30 bg-muted/30 p-8 rounded-2xl shadow-sm">
+      <div className="mb-8 text-muted-foreground/30 bg-muted/40 p-10 rounded-lg shadow-sm">
         <MagnifyingGlass size={80} weight="duotone" />
       </div>
       
@@ -31,12 +31,12 @@ export function EmptyState({ hasSearched, query }: EmptyStateProps) {
         Prøv at omformulere søgningen eller brug andre søgeord.
       </p>
       
-      <div className="bg-card/70 backdrop-blur-sm border border-border/70 rounded-xl p-6 max-w-lg shadow-sm">
-        <p className="font-bold text-foreground mb-4 flex items-center justify-center gap-2">
-          <Sparkle size={20} weight="duotone" className="text-accent" />
+      <div className="bg-card border border-border rounded-lg p-7 max-w-lg shadow-sm">
+        <p className="font-semibold text-foreground mb-5 flex items-center justify-center gap-2">
+          <Sparkle size={20} weight="duotone" className="text-primary" />
           Søgetips:
         </p>
-        <ul className="space-y-2 text-left text-muted-foreground">
+        <ul className="space-y-3 text-left text-muted-foreground">
           <li className="flex items-start gap-3">
             <span className="text-primary mt-1">•</span>
             <span>Brug naturligt, samtalende sprog</span>

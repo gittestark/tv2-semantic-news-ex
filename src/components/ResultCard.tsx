@@ -21,9 +21,9 @@ export function ResultCard({ result, index, onClick }: ResultCardProps) {
   }
 
   const getRelevanceColor = (score: number) => {
-    if (score >= 0.7) return 'from-accent to-accent/80'
-    if (score >= 0.5) return 'from-primary to-primary/80'
-    return 'from-muted-foreground/60 to-muted-foreground/40'
+    if (score >= 0.7) return 'bg-primary'
+    if (score >= 0.5) return 'bg-primary/80'
+    return 'bg-secondary/60'
   }
 
   const getRelevanceLabel = (score: number) => {
@@ -41,20 +41,25 @@ export function ResultCard({ result, index, onClick }: ResultCardProps) {
         delay: index * 0.08,
         ease: [0.22, 1, 0.36, 1]
       }}
-      whileHover={{ scale: 1.01, y: -3 }}
+      whileHover={{ scale: 1.005, y: -2 }}
     >
       <Card 
-        className="p-7 hover:shadow-xl hover:shadow-primary/8 transition-all duration-300 hover:border-primary/40 cursor-pointer group bg-card/70 backdrop-blur-sm relative overflow-hidden border border-border/70 rounded-xl"
+        className="p-8 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:border-primary/50 cursor-pointer group bg-card relative overflow-hidden border-2 border-border rounded-lg focus-within:ring-2 focus-within:ring-primary/50 focus-within:ring-offset-2"
         onClick={onClick}
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault()
+            onClick?.()
+          }
+        }}
       >
-        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
-             style={{ backgroundImage: `linear-gradient(to right, var(--primary), var(--accent))` }}
-        />
+        <div className="absolute top-0 left-0 right-0 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         
         <div className="flex items-start gap-5">
           <motion.div 
             className="mt-1.5 text-primary/40 group-hover:text-primary transition-all duration-300"
-            whileHover={{ scale: 1.08, rotate: 3 }}
+            whileHover={{ scale: 1.05 }}
           >
             <Article size={28} weight="duotone" />
           </motion.div>
@@ -66,7 +71,7 @@ export function ResultCard({ result, index, onClick }: ResultCardProps) {
               </h2>
               
               <motion.div 
-                className={`shrink-0 px-3 py-1.5 rounded-full bg-gradient-to-br ${getRelevanceColor(result.relevanceScore)} shadow-md flex items-center gap-1.5`}
+                className={`shrink-0 px-3.5 py-2 rounded-full ${getRelevanceColor(result.relevanceScore)} shadow-sm flex items-center gap-1.5`}
                 whileHover={{ scale: 1.05 }}
               >
                 <TrendUp size={14} weight="bold" className="text-white" />
@@ -76,11 +81,11 @@ export function ResultCard({ result, index, onClick }: ResultCardProps) {
               </motion.div>
             </div>
             
-            <p className="text-foreground/70 mb-5 line-clamp-3 leading-relaxed text-base">
+            <p className="text-foreground/80 mb-6 line-clamp-3 leading-relaxed text-base">
               {result.excerpt}
             </p>
             
-            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-4">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-5">
               <span className="flex items-center gap-2 font-medium">
                 <Calendar size={16} weight="duotone" />
                 {formatDate(result.publishedDate)}
@@ -90,7 +95,7 @@ export function ResultCard({ result, index, onClick }: ResultCardProps) {
                 {result.byline}
               </span>
               
-              <Badge variant="outline" className="text-xs uppercase font-semibold tracking-wide border">
+              <Badge variant="outline" className="text-xs uppercase font-semibold tracking-wide border-border">
                 {result.category}
               </Badge>
               

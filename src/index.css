@@ -8,35 +8,41 @@
 }
 
 :root {
-  --background: oklch(0.98 0.002 280);
-  --foreground: oklch(0.18 0.01 280);
+  --tv2-red: #E30613;
+  --tv2-white: #FFFFFF;
+  --tv2-black: #000000;
+  --tv2-gray-light: #F5F5F5;
+  --tv2-gray-dark: #333333;
+  
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.20 0 0);
   
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.01 280);
+  --card-foreground: oklch(0.20 0 0);
   
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.01 280);
+  --popover-foreground: oklch(0.20 0 0);
   
-  --primary: oklch(0.44 0.23 25);
-  --primary-foreground: oklch(0.99 0 0);
+  --primary: oklch(0.46 0.258 27.84);
+  --primary-foreground: oklch(1 0 0);
   
-  --secondary: oklch(0.38 0.15 260);
-  --secondary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.20 0 0);
+  --secondary-foreground: oklch(1 0 0);
   
-  --muted: oklch(0.96 0.005 280);
-  --muted-foreground: oklch(0.52 0.02 280);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.55 0 0);
   
-  --accent: oklch(0.62 0.26 28);
-  --accent-foreground: oklch(0.99 0 0);
+  --accent: oklch(0.46 0.258 27.84);
+  --accent-foreground: oklch(1 0 0);
   
-  --destructive: oklch(0.52 0.24 28);
-  --destructive-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.46 0.258 27.84);
+  --destructive-foreground: oklch(1 0 0);
   
-  --border: oklch(0.90 0.005 280);
-  --input: oklch(0.92 0.005 280);
-  --ring: oklch(0.44 0.23 25);
+  --border: oklch(0.93 0 0);
+  --input: oklch(0.96 0 0);
+  --ring: oklch(0.46 0.258 27.84);
   
-  --radius: 0.75rem;
+  --radius: 0.5rem;
 }
 
 @theme {
@@ -60,7 +66,7 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   
-  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-sm: calc(var(--radius) * 0.75);
   --radius-md: var(--radius);
   --radius-lg: calc(var(--radius) * 1.5);
   --radius-xl: calc(var(--radius) * 2);
@@ -74,12 +80,12 @@
 body {
   font-family: var(--font-sans);
   background: 
-    radial-gradient(ellipse at 15% 20%, oklch(0.44 0.23 25 / 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 85% 75%, oklch(0.38 0.15 260 / 0.08) 0%, transparent 55%),
-    radial-gradient(circle at 50% 50%, oklch(0.96 0.008 280 / 0.6) 0%, transparent 100%),
-    linear-gradient(135deg, oklch(0.982 0.003 25) 0%, oklch(0.985 0.002 280) 50%, oklch(0.980 0.003 260) 100%);
+    radial-gradient(ellipse at 20% 10%, oklch(0.46 0.258 27.84 / 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, oklch(0.20 0 0 / 0.03) 0%, transparent 50%),
+    oklch(0.985 0 0);
   background-attachment: fixed;
   min-height: 100vh;
+  line-height: 1.6;
 }
 
 .font-display {

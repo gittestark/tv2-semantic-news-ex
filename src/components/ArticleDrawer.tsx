@@ -33,7 +33,7 @@ export function ArticleDrawer({ article, open, onClose }: ArticleDrawerProps) {
 
   return (
     <Sheet open={open} onOpenChange={onClose}>
-      <SheetContent className="w-full sm:max-w-3xl bg-background/95 backdrop-blur-xl border-l border-border/70">
+      <SheetContent className="w-full sm:max-w-3xl bg-background border-l-2 border-border">
         <SheetHeader>
           <SheetTitle className="font-display text-3xl font-bold leading-tight pr-8 text-foreground">
             {article.title}
@@ -50,7 +50,7 @@ export function ArticleDrawer({ article, open, onClose }: ArticleDrawerProps) {
             <div className="flex flex-wrap gap-4 text-sm">
               <motion.span 
                 className="flex items-center gap-2 text-muted-foreground font-medium"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.03 }}
               >
                 <Calendar size={18} weight="duotone" />
                 {formatDate(article.publishedDate)}
@@ -58,24 +58,24 @@ export function ArticleDrawer({ article, open, onClose }: ArticleDrawerProps) {
               
               <motion.span 
                 className="flex items-center gap-2 text-muted-foreground font-medium"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.03 }}
               >
                 <User size={18} weight="duotone" />
                 {article.byline}
               </motion.span>
               
-              <Badge variant="outline" className="text-xs uppercase font-bold tracking-wide border">
+              <Badge variant="outline" className="text-xs uppercase font-bold tracking-wide border-border">
                 <Folder size={16} className="mr-1.5" weight="duotone" />
                 {article.category}
               </Badge>
               
-              <Badge className="bg-gradient-to-r from-primary to-accent text-white shadow-md">
+              <Badge className="bg-primary text-white shadow-sm">
                 <TrendUp size={16} className="mr-1.5" weight="bold" />
                 Relevans: {Math.round(article.relevanceScore * 100)}%
               </Badge>
             </div>
 
-            <div className="bg-gradient-to-br from-primary/8 to-accent/8 p-6 rounded-xl border border-primary/20 shadow-sm">
+            <div className="bg-muted/50 p-7 rounded-lg border border-border shadow-sm">
               <p className="text-base md:text-lg leading-relaxed text-foreground font-semibold">
                 {article.excerpt}
               </p>
@@ -93,7 +93,7 @@ export function ArticleDrawer({ article, open, onClose }: ArticleDrawerProps) {
               <>
                 <Separator className="my-8" />
                 <div>
-                  <h3 className="text-base font-bold mb-4 flex items-center gap-2">
+                  <h3 className="text-base font-bold mb-5 flex items-center gap-2">
                     <Tag size={20} weight="duotone" className="text-primary" />
                     Emner
                   </h3>
@@ -107,7 +107,7 @@ export function ArticleDrawer({ article, open, onClose }: ArticleDrawerProps) {
                       >
                         <Badge 
                           variant="secondary"
-                          className="text-sm py-1.5 px-3 hover:bg-primary/20 transition-colors"
+                          className="text-sm py-2 px-3 hover:bg-primary/10 transition-colors"
                         >
                           {topic}
                         </Badge>
@@ -122,7 +122,7 @@ export function ArticleDrawer({ article, open, onClose }: ArticleDrawerProps) {
               <>
                 <Separator className="my-8" />
                 <div>
-                  <h3 className="text-base font-bold mb-4 flex items-center gap-2">
+                  <h3 className="text-base font-bold mb-5 flex items-center gap-2">
                     <User size={20} weight="duotone" className="text-primary" />
                     Kilder i artiklen
                   </h3>
