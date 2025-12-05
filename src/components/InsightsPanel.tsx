@@ -8,7 +8,8 @@ import {
   Target, 
   Users, 
   Warning,
-  Clock
+  Clock,
+  Sparkle
 } from '@phosphor-icons/react'
 import { motion } from 'framer-motion'
 
@@ -28,149 +29,186 @@ export function InsightsPanel({ insights }: InsightsPanelProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="space-y-6"
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      className="space-y-5"
     >
-      <Card className="p-6 bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20">
-        <div className="flex items-start gap-3 mb-4">
-          <Lightbulb size={24} weight="duotone" className="text-primary shrink-0 mt-1" />
-          <div>
-            <h3 className="font-display font-semibold text-lg mb-2">
-              AI-assistent opsummering
-            </h3>
-            <p className="text-sm text-foreground/80 leading-relaxed">
-              {insights.coverageSummary}
-            </p>
+      <Card className="p-6 bg-gradient-to-br from-primary/10 via-primary/5 to-accent/8 border-2 border-primary/30 shadow-xl shadow-primary/10 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent/20 to-transparent rounded-full blur-3xl" />
+        <div className="relative">
+          <div className="flex items-start gap-3 mb-4">
+            <motion.div
+              animate={{ rotate: [0, 5, -5, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Sparkle size={28} weight="duotone" className="text-primary shrink-0 mt-1" />
+            </motion.div>
+            <div>
+              <h3 className="font-display font-bold text-lg mb-3 flex items-center gap-2">
+                AI-assistent opsummering
+                <Badge variant="secondary" className="text-xs">Powered by Claude</Badge>
+              </h3>
+              <p className="text-sm text-foreground/85 leading-relaxed font-medium">
+                {insights.coverageSummary}
+              </p>
+            </div>
           </div>
         </div>
       </Card>
 
-      <Card className="p-6">
-        <div className="flex items-center gap-2 mb-4">
-          <MagnifyingGlass size={20} weight="duotone" className="text-primary" />
-          <h3 className="font-semibold">Tidligere vinkler</h3>
+      <Card className="p-6 border-2 hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+        <div className="flex items-center gap-2.5 mb-4">
+          <MagnifyingGlass size={22} weight="duotone" className="text-primary" />
+          <h3 className="font-bold text-base">Tidligere vinkler</h3>
         </div>
-        <ul className="space-y-2">
+        <ul className="space-y-3">
           {insights.previousAngles.map((angle, idx) => (
-            <li 
+            <motion.li 
               key={idx}
-              className="text-sm text-foreground/80 pl-4 border-l-2 border-primary/30 py-1"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: idx * 0.1 }}
+              className="text-sm text-foreground/80 pl-4 border-l-3 border-primary/40 py-2 hover:border-primary hover:bg-primary/5 transition-all duration-200 rounded-r"
             >
               {angle}
-            </li>
+            </motion.li>
           ))}
         </ul>
       </Card>
 
-      <Card className="p-6 border-accent/40">
-        <div className="flex items-center gap-2 mb-4">
-          <Target size={20} weight="duotone" className="text-accent" />
-          <h3 className="font-semibold">Mulige blinde vinkler</h3>
+      <Card className="p-6 border-2 border-accent/40 hover:border-accent/60 transition-all duration-300 hover:shadow-lg">
+        <div className="flex items-center gap-2.5 mb-4">
+          <Target size={22} weight="duotone" className="text-accent" />
+          <h3 className="font-bold text-base">Mulige blinde vinkler</h3>
         </div>
-        <ul className="space-y-2">
+        <ul className="space-y-3">
           {insights.blindSpots.map((spot, idx) => (
-            <li 
+            <motion.li 
               key={idx}
-              className="text-sm text-foreground/80 pl-4 border-l-2 border-accent/50 py-1"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: idx * 0.1 }}
+              className="text-sm text-foreground/80 pl-4 border-l-3 border-accent/60 py-2 hover:border-accent hover:bg-accent/5 transition-all duration-200 rounded-r"
             >
               {spot}
-            </li>
+            </motion.li>
           ))}
         </ul>
       </Card>
 
-      <Card className="p-6">
-        <div className="flex items-center gap-2 mb-4">
-          <Lightbulb size={20} weight="duotone" className="text-primary" />
-          <h3 className="font-semibold">Foreslåede nye vinkler</h3>
+      <Card className="p-6 border-2 hover:border-primary/40 transition-all duration-300 hover:shadow-lg bg-gradient-to-br from-background to-primary/5">
+        <div className="flex items-center gap-2.5 mb-4">
+          <Lightbulb size={22} weight="duotone" className="text-accent" />
+          <h3 className="font-bold text-base">Foreslåede nye vinkler</h3>
         </div>
-        <ul className="space-y-2">
+        <ul className="space-y-3">
           {insights.suggestedNewAngles.map((angle, idx) => (
-            <li 
+            <motion.li 
               key={idx}
-              className="text-sm text-foreground/80 pl-4 border-l-2 border-primary/30 py-1"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: idx * 0.1 }}
+              className="text-sm text-foreground/80 pl-4 border-l-3 border-accent/40 py-2 hover:border-accent hover:bg-accent/5 transition-all duration-200 rounded-r font-medium"
             >
               {angle}
-            </li>
+            </motion.li>
           ))}
         </ul>
       </Card>
 
-      <Card className="p-6">
-        <div className="flex items-center gap-2 mb-4">
-          <Users size={20} weight="duotone" className="text-primary" />
-          <h3 className="font-semibold">Brugte kilder</h3>
+      <Card className="p-6 border-2 hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+        <div className="flex items-center gap-2.5 mb-4">
+          <Users size={22} weight="duotone" className="text-primary" />
+          <h3 className="font-bold text-base">Brugte kilder</h3>
         </div>
         <div className="flex flex-wrap gap-2">
           {insights.usedSources.length > 0 ? (
             insights.usedSources.map((source, idx) => (
-              <Badge key={idx} variant="secondary">
-                {source}
-              </Badge>
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: idx * 0.05 }}
+              >
+                <Badge variant="secondary" className="hover:bg-primary/20 transition-colors">
+                  {source}
+                </Badge>
+              </motion.div>
             ))
           ) : (
             <p className="text-sm text-muted-foreground">Ingen kilder identificeret</p>
           )}
         </div>
 
-        <Separator className="my-4" />
+        <Separator className="my-5" />
 
-        <div className="flex items-center gap-2 mb-3">
-          <Users size={18} weight="duotone" className="text-accent" />
-          <h4 className="font-semibold text-sm">Mulige opfølgningskilder</h4>
+        <div className="flex items-center gap-2.5 mb-3">
+          <Users size={20} weight="duotone" className="text-accent" />
+          <h4 className="font-bold text-sm">Mulige opfølgningskilder</h4>
         </div>
-        <ul className="space-y-1">
+        <ul className="space-y-2">
           {insights.potentialFollowUpSources.map((source, idx) => (
-            <li 
+            <motion.li 
               key={idx}
-              className="text-sm text-foreground/70"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: idx * 0.08 }}
+              className="text-sm text-foreground/75 hover:text-foreground transition-colors"
             >
               • {source}
-            </li>
+            </motion.li>
           ))}
         </ul>
       </Card>
 
       {insights.timeline && insights.timeline.length > 0 && (
-        <Card className="p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <Clock size={20} weight="duotone" className="text-primary" />
-            <h3 className="font-semibold">Tidslinje for dækning</h3>
+        <Card className="p-6 border-2 hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+          <div className="flex items-center gap-2.5 mb-5">
+            <Clock size={22} weight="duotone" className="text-primary" />
+            <h3 className="font-bold text-base">Tidslinje for dækning</h3>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-4">
             {insights.timeline.slice(0, 10).map((event, idx) => (
-              <div key={idx} className="flex gap-3 items-start">
-                <div className="text-xs text-muted-foreground shrink-0 w-20">
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.08 }}
+                className="flex gap-4 items-start hover:bg-primary/5 p-3 rounded-lg transition-colors"
+              >
+                <div className="text-xs text-muted-foreground shrink-0 w-24 font-semibold">
                   {formatDate(event.date)}
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm text-foreground/80">{event.title}</p>
-                  <Badge variant="outline" className="text-xs mt-1">
+                  <p className="text-sm text-foreground/85 font-medium leading-relaxed">{event.title}</p>
+                  <Badge variant="outline" className="text-xs mt-2">
                     {event.category}
                   </Badge>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </Card>
       )}
 
       {insights.contradictions && insights.contradictions.length > 0 && (
-        <Card className="p-6 border-destructive/40">
-          <div className="flex items-center gap-2 mb-4">
-            <Warning size={20} weight="duotone" className="text-destructive" />
-            <h3 className="font-semibold">Modsigelser at være opmærksom på</h3>
+        <Card className="p-6 border-2 border-destructive/40 hover:border-destructive/60 transition-all duration-300 hover:shadow-lg bg-destructive/5">
+          <div className="flex items-center gap-2.5 mb-4">
+            <Warning size={22} weight="duotone" className="text-destructive" />
+            <h3 className="font-bold text-base">Modsigelser at være opmærksom på</h3>
           </div>
-          <ul className="space-y-2">
+          <ul className="space-y-3">
             {insights.contradictions.map((contradiction, idx) => (
-              <li 
+              <motion.li 
                 key={idx}
-                className="text-sm text-foreground/80 pl-4 border-l-2 border-destructive/30 py-1"
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                className="text-sm text-foreground/80 pl-4 border-l-3 border-destructive/50 py-2 hover:border-destructive hover:bg-destructive/10 transition-all duration-200 rounded-r font-medium"
               >
                 {contradiction}
-              </li>
+              </motion.li>
             ))}
           </ul>
         </Card>

@@ -1,7 +1,7 @@
 import { SearchResult } from '@/lib/types'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Article, Calendar, ChartBar } from '@phosphor-icons/react'
+import { Article, Calendar, ChartBar, TrendUp } from '@phosphor-icons/react'
 import { motion } from 'framer-motion'
 
 interface ResultCardProps {
@@ -20,80 +20,101 @@ export function ResultCard({ result, index, onClick }: ResultCardProps) {
     })
   }
 
-  const getRelevanceBadgeVariant = (score: number) => {
-    if (score >= 0.5) return 'default'
-    if (score >= 0.3) return 'secondary'
-    return 'outline'
+  const getRelevanceColor = (score: number) => {
+    if (score >= 0.7) return 'from-accent to-accent/80'
+    if (score >= 0.5) return 'from-primary to-primary/80'
+    return 'from-muted-foreground/60 to-muted-foreground/40'
   }
 
-  const getRelevanceBadgeClass = (score: number) => {
-    if (score >= 0.5) return 'bg-accent text-accent-foreground hover:bg-accent/90'
-    if (score >= 0.3) return 'bg-primary text-primary-foreground hover:bg-primary/90'
-    return ''
+  const getRelevanceLabel = (score: number) => {
+    if (score >= 0.7) return 'Meget relevant'
+    if (score >= 0.5) return 'Relevant'
+    return 'Mulig match'
   }
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ 
-        duration: 0.4, 
-        delay: index * 0.05,
-        ease: [0.25, 0.1, 0.25, 1]
+        duration: 0.5, 
+        delay: index * 0.08,
+        ease: [0.22, 1, 0.36, 1]
       }}
+      whileHover={{ scale: 1.015, y: -4 }}
     >
       <Card 
-        className="p-6 hover:shadow-lg transition-all duration-300 hover:border-primary/30 cursor-pointer group"
+        className="p-8 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 hover:border-primary/50 cursor-pointer group bg-card/60 backdrop-blur-sm relative overflow-hidden"
         onClick={onClick}
       >
-        <div className="flex items-start gap-4">
-          <div className="mt-1 text-primary/60 group-hover:text-primary transition-colors">
-            <Article size={24} weight="duotone" />
-          </div>
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
+             style={{ backgroundImage: `linear-gradient(to right, var(--primary), var(--accent))` }}
+        />
+        
+        <div className="flex items-start gap-5">
+          <motion.div 
+            className="mt-1.5 text-primary/50 group-hover:text-primary transition-all duration-300"
+            whileHover={{ scale: 1.1, rotate: 5 }}
+          >
+            <Article size={28} weight="duotone" />
+          </motion.div>
           
           <div className="flex-1 min-w-0">
-            <div className="flex items-start justify-between gap-4 mb-3">
-              <h2 className="font-display font-semibold text-xl leading-tight text-foreground group-hover:text-primary transition-colors">
+            <div className="flex items-start justify-between gap-6 mb-4">
+              <h2 className="font-display font-bold text-xl md:text-2xl leading-tight text-foreground group-hover:text-primary transition-colors duration-300">
                 {result.title}
               </h2>
-              <Badge 
-                variant={getRelevanceBadgeVariant(result.relevanceScore)}
-                className={`shrink-0 ${getRelevanceBadgeClass(result.relevanceScore)}`}
+              
+              <motion.div 
+                className={`shrink-0 px-3 py-1.5 rounded-full bg-gradient-to-br ${getRelevanceColor(result.relevanceScore)} shadow-lg flex items-center gap-1.5`}
+                whileHover={{ scale: 1.05 }}
               >
-                <ChartBar size={14} className="mr-1" />
-                {Math.round(result.relevanceScore * 100)}%
-              </Badge>
+                <TrendUp size={14} weight="bold" className="text-white" />
+                <span className="text-white font-bold text-sm">
+                  {Math.round(result.relevanceScore * 100)}%
+                </span>
+              </motion.div>
             </div>
             
-            <p className="text-foreground/70 mb-4 line-clamp-3 leading-relaxed">
+            <p className="text-foreground/75 mb-5 line-clamp-3 leading-relaxed text-base">
               {result.excerpt}
             </p>
             
-            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-              <span className="flex items-center gap-1.5">
-                <Calendar size={14} />
+            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-4">
+              <span className="flex items-center gap-2 font-medium">
+                <Calendar size={16} weight="duotone" />
                 {formatDate(result.publishedDate)}
               </span>
               
-              <span className="font-medium">
+              <span className="font-medium text-foreground/80">
                 {result.byline}
               </span>
               
-              <Badge variant="outline" className="text-xs uppercase">
+              <Badge variant="outline" className="text-xs uppercase font-semibold tracking-wide border-2">
                 {result.category}
+              </Badge>
+              
+              <Badge variant="secondary" className="text-xs font-medium">
+                {getRelevanceLabel(result.relevanceScore)}
               </Badge>
             </div>
             
             {result.topics && result.topics.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-3">
-                {result.topics.slice(0, 5).map((topic) => (
-                  <Badge 
-                    key={topic} 
-                    variant="secondary"
-                    className="text-xs font-normal"
+              <div className="flex flex-wrap gap-2">
+                {result.topics.slice(0, 6).map((topic, idx) => (
+                  <motion.div
+                    key={topic}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.08 + idx * 0.05 }}
                   >
-                    {topic}
-                  </Badge>
+                    <Badge 
+                      variant="secondary"
+                      className="text-xs font-normal hover:bg-primary/10 transition-colors"
+                    >
+                      {topic}
+                    </Badge>
+                  </motion.div>
                 ))}
               </div>
             )}

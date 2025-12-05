@@ -7,8 +7,9 @@ import {
 } from '@/components/ui/sheet'
 import { Badge } from '@/components/ui/badge'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Calendar, User, Tag, Folder } from '@phosphor-icons/react'
+import { Calendar, User, Tag, Folder, TrendUp } from '@phosphor-icons/react'
 import { Separator } from '@/components/ui/separator'
+import { motion } from 'framer-motion'
 
 interface ArticleDrawerProps {
   article: SearchResult | null
@@ -32,67 +33,85 @@ export function ArticleDrawer({ article, open, onClose }: ArticleDrawerProps) {
 
   return (
     <Sheet open={open} onOpenChange={onClose}>
-      <SheetContent className="w-full sm:max-w-2xl">
+      <SheetContent className="w-full sm:max-w-3xl bg-background/95 backdrop-blur-xl">
         <SheetHeader>
-          <SheetTitle className="font-display text-2xl leading-tight pr-8">
+          <SheetTitle className="font-display text-3xl font-bold leading-tight pr-8 text-foreground">
             {article.title}
           </SheetTitle>
         </SheetHeader>
 
-        <ScrollArea className="h-[calc(100vh-120px)] mt-6 pr-4">
-          <div className="space-y-6">
-            <div className="flex flex-wrap gap-3 text-sm text-muted-foreground">
-              <span className="flex items-center gap-1.5">
-                <Calendar size={16} />
+        <ScrollArea className="h-[calc(100vh-140px)] mt-8 pr-4">
+          <motion.div 
+            className="space-y-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="flex flex-wrap gap-4 text-sm">
+              <motion.span 
+                className="flex items-center gap-2 text-muted-foreground font-medium"
+                whileHover={{ scale: 1.05 }}
+              >
+                <Calendar size={18} weight="duotone" />
                 {formatDate(article.publishedDate)}
-              </span>
+              </motion.span>
               
-              <span className="flex items-center gap-1.5">
-                <User size={16} />
+              <motion.span 
+                className="flex items-center gap-2 text-muted-foreground font-medium"
+                whileHover={{ scale: 1.05 }}
+              >
+                <User size={18} weight="duotone" />
                 {article.byline}
-              </span>
+              </motion.span>
               
-              <Badge variant="outline" className="text-xs uppercase">
-                <Folder size={14} className="mr-1" />
+              <Badge variant="outline" className="text-xs uppercase font-bold tracking-wide border-2">
+                <Folder size={16} className="mr-1.5" weight="duotone" />
                 {article.category}
               </Badge>
               
-              <Badge className="bg-accent text-accent-foreground">
+              <Badge className="bg-gradient-to-r from-primary to-accent text-white shadow-lg">
+                <TrendUp size={16} className="mr-1.5" weight="bold" />
                 Relevans: {Math.round(article.relevanceScore * 100)}%
               </Badge>
             </div>
 
-            <div className="bg-muted/50 p-4 rounded-lg border border-border">
-              <p className="text-base leading-relaxed text-foreground/90 font-medium">
+            <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-6 rounded-2xl border-2 border-primary/20 shadow-lg">
+              <p className="text-base md:text-lg leading-relaxed text-foreground font-semibold">
                 {article.excerpt}
               </p>
             </div>
 
-            <Separator />
+            <Separator className="my-8" />
 
-            <div className="prose prose-sm max-w-none">
-              <div className="whitespace-pre-wrap text-foreground/80 leading-relaxed">
+            <div className="prose prose-lg max-w-none">
+              <div className="whitespace-pre-wrap text-foreground/85 leading-relaxed text-base">
                 {article.full_text}
               </div>
             </div>
 
             {article.topics && article.topics.length > 0 && (
               <>
-                <Separator />
+                <Separator className="my-8" />
                 <div>
-                  <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
-                    <Tag size={16} />
+                  <h3 className="text-base font-bold mb-4 flex items-center gap-2">
+                    <Tag size={20} weight="duotone" className="text-primary" />
                     Emner
                   </h3>
                   <div className="flex flex-wrap gap-2">
-                    {article.topics.map((topic) => (
-                      <Badge 
-                        key={topic} 
-                        variant="secondary"
-                        className="text-xs"
+                    {article.topics.map((topic, idx) => (
+                      <motion.div
+                        key={topic}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: idx * 0.05 }}
                       >
-                        {topic}
-                      </Badge>
+                        <Badge 
+                          variant="secondary"
+                          className="text-sm py-1.5 px-3 hover:bg-primary/20 transition-colors"
+                        >
+                          {topic}
+                        </Badge>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
@@ -101,26 +120,29 @@ export function ArticleDrawer({ article, open, onClose }: ArticleDrawerProps) {
 
             {article.highlightedSources && article.highlightedSources.length > 0 && (
               <>
-                <Separator />
+                <Separator className="my-8" />
                 <div>
-                  <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
-                    <User size={16} />
+                  <h3 className="text-base font-bold mb-4 flex items-center gap-2">
+                    <User size={20} weight="duotone" className="text-primary" />
                     Kilder i artiklen
                   </h3>
-                  <ul className="space-y-1">
+                  <ul className="space-y-3">
                     {article.highlightedSources.map((source, idx) => (
-                      <li 
+                      <motion.li 
                         key={idx}
-                        className="text-sm text-foreground/70 pl-4 border-l-2 border-primary/30"
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: idx * 0.08 }}
+                        className="text-sm text-foreground/75 pl-5 border-l-4 border-primary/40 py-2 hover:border-primary hover:bg-primary/5 transition-all duration-200 rounded-r font-medium"
                       >
                         {source}
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
                 </div>
               </>
             )}
-          </div>
+          </motion.div>
         </ScrollArea>
       </SheetContent>
     </Sheet>
