@@ -26,7 +26,7 @@ export function SearchBar({ onSearch, isLoading }: SearchBarProps) {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Ask a question or search for news..."
+            placeholder="Stil et spørgsmål eller søg efter nyheder..."
             className="w-full px-6 py-4 text-base h-auto focus-visible:ring-primary"
             disabled={isLoading}
             maxLength={500}
@@ -38,7 +38,7 @@ export function SearchBar({ onSearch, isLoading }: SearchBarProps) {
           className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 h-auto transition-transform hover:scale-102"
         >
           <MagnifyingGlass className="mr-2" />
-          Search
+          Søg
         </Button>
       </div>
     </form>

@@ -7,12 +7,13 @@ import { motion } from 'framer-motion'
 interface ResultCardProps {
   result: SearchResult
   index: number
+  onClick?: () => void
 }
 
-export function ResultCard({ result, index }: ResultCardProps) {
+export function ResultCard({ result, index, onClick }: ResultCardProps) {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
-    return date.toLocaleDateString('en-US', { 
+    return date.toLocaleDateString('da-DK', { 
       year: 'numeric', 
       month: 'short', 
       day: 'numeric' 
@@ -20,14 +21,14 @@ export function ResultCard({ result, index }: ResultCardProps) {
   }
 
   const getRelevanceBadgeVariant = (score: number) => {
-    if (score >= 0.85) return 'default'
-    if (score >= 0.70) return 'secondary'
+    if (score >= 0.5) return 'default'
+    if (score >= 0.3) return 'secondary'
     return 'outline'
   }
 
   const getRelevanceBadgeClass = (score: number) => {
-    if (score >= 0.85) return 'bg-accent text-accent-foreground hover:bg-accent/90'
-    if (score >= 0.70) return 'bg-primary text-primary-foreground hover:bg-primary/90'
+    if (score >= 0.5) return 'bg-accent text-accent-foreground hover:bg-accent/90'
+    if (score >= 0.3) return 'bg-primary text-primary-foreground hover:bg-primary/90'
     return ''
   }
 
@@ -41,7 +42,10 @@ export function ResultCard({ result, index }: ResultCardProps) {
         ease: [0.25, 0.1, 0.25, 1]
       }}
     >
-      <Card className="p-6 hover:shadow-lg transition-all duration-300 hover:border-primary/30 cursor-pointer group">
+      <Card 
+        className="p-6 hover:shadow-lg transition-all duration-300 hover:border-primary/30 cursor-pointer group"
+        onClick={onClick}
+      >
         <div className="flex items-start gap-4">
           <div className="mt-1 text-primary/60 group-hover:text-primary transition-colors">
             <Article size={24} weight="duotone" />
@@ -62,41 +66,33 @@ export function ResultCard({ result, index }: ResultCardProps) {
             </div>
             
             <p className="text-foreground/70 mb-4 line-clamp-3 leading-relaxed">
-              {result.content}
+              {result.excerpt}
             </p>
             
             <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-              <span className="font-medium text-primary">
-                {result.source}
-              </span>
-              
               <span className="flex items-center gap-1.5">
                 <Calendar size={14} />
                 {formatDate(result.publishedDate)}
               </span>
               
-              {result.metadata?.author && (
-                <span>
-                  by {result.metadata.author}
-                </span>
-              )}
+              <span className="font-medium">
+                {result.byline}
+              </span>
               
-              {result.metadata?.category && (
-                <Badge variant="outline" className="text-xs">
-                  {result.metadata.category}
-                </Badge>
-              )}
+              <Badge variant="outline" className="text-xs uppercase">
+                {result.category}
+              </Badge>
             </div>
             
-            {result.metadata?.tags && result.metadata.tags.length > 0 && (
+            {result.topics && result.topics.length > 0 && (
               <div className="flex flex-wrap gap-2 mt-3">
-                {result.metadata.tags.map((tag) => (
+                {result.topics.slice(0, 5).map((topic) => (
                   <Badge 
-                    key={tag} 
+                    key={topic} 
                     variant="secondary"
                     className="text-xs font-normal"
                   >
-                    {tag}
+                    {topic}
                   </Badge>
                 ))}
               </div>

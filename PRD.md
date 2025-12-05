@@ -1,6 +1,6 @@
 # TV2 Semantic News Explorer
 
-A semantic search interface for exploring news content using AI-powered knowledge base queries, designed to connect with AWS Bedrock Knowledge Bases for intelligent content discovery.
+A UX prototype for TV2 journalists to search and analyze previous news coverage using AI-powered semantic search and journalism-focused insights. Built with fictional Danish news data to demonstrate real-world workflows.
 
 **Experience Qualities**:
 1. **Intelligent** - The interface should feel smart and responsive, surfacing relevant results through semantic understanding rather than simple keyword matching
@@ -8,7 +8,7 @@ A semantic search interface for exploring news content using AI-powered knowledg
 3. **Professional** - Conveys trust and authority appropriate for a news organization's internal tool
 
 **Complexity Level**: Light Application (multiple features with basic state)
-This is a search-focused tool with form input, results display, and state management. It requires API integration patterns and clear feedback states but doesn't need complex routing or multi-view architecture.
+This is a search-focused tool with form input, results display, article detail view, AI insights panel, and state management. Features semantic search simulation, LLM-powered insight generation, and drawer-based article viewing.
 
 ## Essential Features
 
@@ -33,12 +33,26 @@ This is a search-focused tool with form input, results display, and state manage
 - **Progression**: User sees empty state → Reads guidance → Performs search
 - **Success criteria**: Clear, helpful messaging that doesn't feel like an error
 
-### API Integration Layer
-- **Functionality**: Configurable connection point for AWS Bedrock Knowledge Base API
-- **Purpose**: Enable easy backend integration without modifying core UI logic
-- **Trigger**: Search submission
-- **Progression**: UI calls API service → Service formats request → Sends to backend → Processes response → Returns to UI
-- **Success criteria**: Clear separation of concerns, documented integration points, easy credential configuration
+### Article Detail Drawer
+- **Functionality**: Side drawer showing complete article with metadata, extracted sources, and full text
+- **Purpose**: Allow journalists to review full article context without leaving search results
+- **Trigger**: Click on any result card
+- **Progression**: Click card → Drawer slides in → View full text → See sources → Close drawer → Return to results
+- **Success criteria**: Smooth transitions, readable text formatting, easy to dismiss
+
+### AI Insights Panel
+- **Functionality**: AI-generated journalism insights including previous angles, blind spots, source suggestions, and timeline
+- **Purpose**: Help journalists understand coverage history and discover new story angles
+- **Trigger**: Successful search with results
+- **Progression**: Search completes → AI analyzes results → Insights appear in side panel → Journalist reviews recommendations
+- **Success criteria**: Relevant insights, clear categorization, actionable suggestions
+
+### Semantic Search System
+- **Functionality**: Simulated semantic search across 25 fictional Danish articles using relevance scoring
+- **Purpose**: Demonstrate semantic search UX without requiring backend infrastructure
+- **Trigger**: User submits query
+- **Progression**: Query submitted → Relevance calculated → Articles ranked → Top results returned with scores
+- **Success criteria**: Relevant results, appropriate relevance scores, fast response time
 
 ## Edge Case Handling
 
