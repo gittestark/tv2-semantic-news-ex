@@ -88,19 +88,19 @@ function App() {
   return (
     <>
       <div className="min-h-screen flex flex-col">
-        <header className="sticky top-0 z-10 bg-background/70 backdrop-blur-xl border-b-2 border-border/50 shadow-lg shadow-primary/5">
-          <div className="container mx-auto px-6 md:px-12 py-8">
+        <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-xl border-b border-border/60 shadow-sm">
+          <div className="container mx-auto px-6 md:px-12 py-7">
             <motion.div 
-              className="mb-8"
+              className="mb-7"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="flex items-center gap-3 mb-3">
+              <div className="flex items-center gap-3 mb-2">
                 <motion.div
                   animate={{ 
-                    scale: [1, 1.1, 1],
-                    rotate: [0, 5, -5, 0]
+                    scale: [1, 1.08, 1],
+                    rotate: [0, 3, -3, 0]
                   }}
                   transition={{ 
                     duration: 4,
@@ -108,16 +108,16 @@ function App() {
                     ease: "easeInOut"
                   }}
                 >
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg shadow-primary/30">
-                    <MagnifyingGlass size={24} weight="bold" className="text-white" />
+                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary via-accent to-primary flex items-center justify-center shadow-lg shadow-primary/25">
+                    <MagnifyingGlass size={26} weight="bold" className="text-white" />
                   </div>
                 </motion.div>
-                <h1 className="font-display text-3xl md:text-5xl font-bold text-foreground tracking-tight bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent">
-                  TV2 Semantic News Explorer
+                <h1 className="font-display text-3xl md:text-5xl font-bold text-foreground tracking-tight bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                  TV 2 Semantic News Explorer
                 </h1>
               </div>
-              <p className="text-muted-foreground text-sm md:text-base uppercase tracking-widest font-bold flex items-center gap-2">
-                <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+              <p className="text-muted-foreground text-sm md:text-base uppercase tracking-widest font-bold flex items-center gap-2 pl-14">
+                <span className="w-2 h-2 bg-accent rounded-full animate-pulse shadow-sm shadow-accent" />
                 AI-Powered Content Discovery
               </p>
             </motion.div>
@@ -143,7 +143,7 @@ function App() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.4 + idx * 0.1 }}
                       onClick={() => handleExampleClick(scenario.query)}
-                      className="group bg-card/60 backdrop-blur-sm border-2 border-border/50 hover:border-primary/40 rounded-xl p-5 text-left transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 active:translate-y-0"
+                      className="group bg-card/70 backdrop-blur-sm border border-border/60 hover:border-primary/50 rounded-xl p-6 text-left transition-all duration-300 hover:shadow-xl hover:shadow-primary/8 hover:-translate-y-1 active:translate-y-0"
                     >
                       <div className="flex items-start gap-3">
                         <span className="text-2xl flex-shrink-0">{scenario.icon}</span>
@@ -173,7 +173,7 @@ function App() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
             >
-              <Alert variant="destructive" className="mb-8 border-2">
+              <Alert variant="destructive" className="mb-8 border">
                 <Warning className="h-5 w-5" weight="duotone" />
                 <AlertDescription className="font-medium">{error}</AlertDescription>
               </Alert>
@@ -187,7 +187,7 @@ function App() {
               <div className="lg:col-span-2">
                 <div className="space-y-5 pb-8">
                   <motion.div 
-                    className="flex items-center justify-between mb-4 bg-card/50 backdrop-blur-sm p-4 rounded-xl border-2"
+                    className="flex items-center justify-between mb-4 bg-card/60 backdrop-blur-sm p-5 rounded-xl border border-border/60 shadow-sm"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                   >
@@ -230,7 +230,7 @@ function App() {
           )}
         </main>
 
-        <footer className="border-t-2 border-border/50 py-8 bg-card/30 backdrop-blur-sm">
+        <footer className="border-t border-border/60 py-8 bg-card/40 backdrop-blur-sm">
           <div className="container mx-auto px-6 md:px-12">
             <p className="text-sm text-muted-foreground text-center font-medium">
               Prototype med fiktive data • Klar til integration med AWS Bedrock Knowledge Base

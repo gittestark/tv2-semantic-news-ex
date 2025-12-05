@@ -41,20 +41,20 @@ export function ResultCard({ result, index, onClick }: ResultCardProps) {
         delay: index * 0.08,
         ease: [0.22, 1, 0.36, 1]
       }}
-      whileHover={{ scale: 1.015, y: -4 }}
+      whileHover={{ scale: 1.01, y: -3 }}
     >
       <Card 
-        className="p-8 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 hover:border-primary/50 cursor-pointer group bg-card/60 backdrop-blur-sm relative overflow-hidden"
+        className="p-7 hover:shadow-xl hover:shadow-primary/8 transition-all duration-300 hover:border-primary/40 cursor-pointer group bg-card/70 backdrop-blur-sm relative overflow-hidden border border-border/70 rounded-xl"
         onClick={onClick}
       >
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
+        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
              style={{ backgroundImage: `linear-gradient(to right, var(--primary), var(--accent))` }}
         />
         
         <div className="flex items-start gap-5">
           <motion.div 
-            className="mt-1.5 text-primary/50 group-hover:text-primary transition-all duration-300"
-            whileHover={{ scale: 1.1, rotate: 5 }}
+            className="mt-1.5 text-primary/40 group-hover:text-primary transition-all duration-300"
+            whileHover={{ scale: 1.08, rotate: 3 }}
           >
             <Article size={28} weight="duotone" />
           </motion.div>
@@ -66,7 +66,7 @@ export function ResultCard({ result, index, onClick }: ResultCardProps) {
               </h2>
               
               <motion.div 
-                className={`shrink-0 px-3 py-1.5 rounded-full bg-gradient-to-br ${getRelevanceColor(result.relevanceScore)} shadow-lg flex items-center gap-1.5`}
+                className={`shrink-0 px-3 py-1.5 rounded-full bg-gradient-to-br ${getRelevanceColor(result.relevanceScore)} shadow-md flex items-center gap-1.5`}
                 whileHover={{ scale: 1.05 }}
               >
                 <TrendUp size={14} weight="bold" className="text-white" />
@@ -76,7 +76,7 @@ export function ResultCard({ result, index, onClick }: ResultCardProps) {
               </motion.div>
             </div>
             
-            <p className="text-foreground/75 mb-5 line-clamp-3 leading-relaxed text-base">
+            <p className="text-foreground/70 mb-5 line-clamp-3 leading-relaxed text-base">
               {result.excerpt}
             </p>
             
@@ -86,11 +86,11 @@ export function ResultCard({ result, index, onClick }: ResultCardProps) {
                 {formatDate(result.publishedDate)}
               </span>
               
-              <span className="font-medium text-foreground/80">
+              <span className="font-medium text-foreground/75">
                 {result.byline}
               </span>
               
-              <Badge variant="outline" className="text-xs uppercase font-semibold tracking-wide border-2">
+              <Badge variant="outline" className="text-xs uppercase font-semibold tracking-wide border">
                 {result.category}
               </Badge>
               

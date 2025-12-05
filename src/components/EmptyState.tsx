@@ -18,7 +18,7 @@ export function EmptyState({ hasSearched, query }: EmptyStateProps) {
       transition={{ duration: 0.8 }}
       className="flex flex-col items-center justify-center py-24 px-6 text-center"
     >
-      <div className="mb-8 text-muted-foreground/30 bg-muted/30 p-8 rounded-2xl">
+      <div className="mb-8 text-muted-foreground/30 bg-muted/30 p-8 rounded-2xl shadow-sm">
         <MagnifyingGlass size={80} weight="duotone" />
       </div>
       
@@ -31,7 +31,7 @@ export function EmptyState({ hasSearched, query }: EmptyStateProps) {
         Prøv at omformulere søgningen eller brug andre søgeord.
       </p>
       
-      <div className="bg-card/60 backdrop-blur-sm border-2 rounded-xl p-6 max-w-lg">
+      <div className="bg-card/70 backdrop-blur-sm border border-border/70 rounded-xl p-6 max-w-lg shadow-sm">
         <p className="font-bold text-foreground mb-4 flex items-center justify-center gap-2">
           <Sparkle size={20} weight="duotone" className="text-accent" />
           Søgetips:

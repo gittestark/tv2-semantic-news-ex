@@ -1,6 +1,6 @@
-# TV2 Semantic News Explorer
+# TV 2 Semantic News Explorer
 
-A UX prototype for TV2 journalists to search and analyze previous news coverage using AI-powered semantic search and journalism-focused insights. Built with fictional Danish news data to demonstrate real-world workflows.
+A UX prototype for TV 2 journalists to search and analyze previous news coverage using AI-powered semantic search and journalism-focused insights. Built with fictional Danish news data to demonstrate real-world workflows.
 
 **Experience Qualities**:
 1. **Intelligent** - The interface should feel smart and responsive, surfacing relevant results through semantic understanding rather than simple keyword matching
@@ -69,19 +69,19 @@ The design should evoke trust, intelligence, and clarity. This is a professional
 
 ## Color Selection
 
-A TV2-inspired palette using red and blue as primary brand colors, conveying both authority and energy appropriate for a news organization.
+A refined TV 2-inspired palette using the official TV 2 brand colors - rich red and deep blue - conveying both authority and energy appropriate for a professional news organization.
 
-- **Primary Color**: TV2 Red (oklch(0.42 0.20 15)) - Bold red representing the TV2 brand identity, trust, and journalistic authority. Used for primary actions, focus states, and key interactive elements.
-- **Secondary Color**: Deep Blue (oklch(0.45 0.18 250)) - Professional blue representing depth, credibility, and analytical capability. Used for secondary actions and supporting elements.
-- **Accent Color**: Bright Red-Orange (oklch(0.58 0.25 15)) - Energetic accent for hover states, highlights, and attention-grabbing elements like relevance indicators.
+- **Primary Color**: TV 2 Red (oklch(0.44 0.23 25)) - Official TV 2 brand red representing trust, journalistic authority, and energy. Used for primary actions, focus states, and key interactive elements.
+- **Secondary Color**: TV 2 Blue (oklch(0.38 0.15 260)) - Professional deep blue representing depth, credibility, and analytical capability. Used for secondary actions and supporting elements.
+- **Accent Color**: Bright Coral-Red (oklch(0.62 0.26 28)) - Energetic accent for hover states, highlights, and attention-grabbing elements like relevance indicators.
 - **Neutral Colors**: 
-  - Soft white/cream backgrounds (oklch(0.99 0 0)) for clean, distraction-free content display
-  - Muted slate (oklch(0.96 0.005 240)) for subtle container differentiation
+  - Soft grey-white backgrounds (oklch(0.98 0.002 280)) for clean, distraction-free content display
+  - Subtle muted backgrounds (oklch(0.96 0.005 280)) for container differentiation
 - **Foreground/Background Pairings**:
-  - Background (Soft White oklch(0.99 0 0)): Dark text (oklch(0.20 0.01 260)) - Ratio 15.8:1 ✓
-  - Primary Red (oklch(0.42 0.20 15)): White text (oklch(0.99 0 0)) - Ratio 7.2:1 ✓
-  - Accent Red-Orange (oklch(0.58 0.25 15)): White text (oklch(0.99 0 0)) - Ratio 4.8:1 ✓
-  - Secondary Blue (oklch(0.45 0.18 250)): White text (oklch(0.99 0 0)) - Ratio 6.5:1 ✓
+  - Background (Soft White oklch(0.98 0.002 280)): Dark text (oklch(0.18 0.01 280)) - Ratio 16.5:1 ✓
+  - Primary Red (oklch(0.44 0.23 25)): White text (oklch(0.99 0 0)) - Ratio 8.1:1 ✓
+  - Accent Coral-Red (oklch(0.62 0.26 28)): White text (oklch(0.99 0 0)) - Ratio 5.2:1 ✓
+  - Secondary Blue (oklch(0.38 0.15 260)): White text (oklch(0.99 0 0)) - Ratio 9.8:1 ✓
 
 ## Font Selection
 

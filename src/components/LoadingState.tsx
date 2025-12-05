@@ -12,7 +12,7 @@ export function LoadingState() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: i * 0.1 }}
         >
-          <Card className="p-8 bg-card/60 backdrop-blur-sm">
+          <Card className="p-7 bg-card/70 backdrop-blur-sm border border-border/70 shadow-sm">
             <div className="flex items-start gap-5">
               <Skeleton className="w-7 h-7 mt-1.5 rounded-full shrink-0" />
               

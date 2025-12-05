@@ -25,7 +25,7 @@ export function SearchBar({ onSearch, isLoading }: SearchBarProps) {
       <div className="flex gap-3 items-center">
         <motion.div 
           className="relative flex-1"
-          animate={{ scale: isFocused ? 1.01 : 1 }}
+          animate={{ scale: isFocused ? 1.005 : 1 }}
           transition={{ duration: 0.2 }}
         >
           <div className="absolute left-5 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none z-10">
@@ -38,7 +38,7 @@ export function SearchBar({ onSearch, isLoading }: SearchBarProps) {
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             placeholder="Stil et spørgsmål eller søg efter nyheder..."
-            className="w-full pl-14 pr-6 py-6 text-base h-auto shadow-lg shadow-primary/5 border-2 focus-visible:border-primary/40 focus-visible:ring-4 focus-visible:ring-primary/10 transition-all duration-200 bg-card/80 backdrop-blur-sm"
+            className="w-full pl-14 pr-6 py-6 text-base h-auto shadow-md shadow-primary/5 border border-border/80 focus-visible:border-primary/50 focus-visible:ring-2 focus-visible:ring-primary/15 transition-all duration-200 bg-card/90 backdrop-blur-sm rounded-lg"
             disabled={isLoading}
             maxLength={500}
           />
@@ -59,7 +59,7 @@ export function SearchBar({ onSearch, isLoading }: SearchBarProps) {
           type="submit"
           disabled={isLoading || !query.trim()}
           size="lg"
-          className="bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 text-primary-foreground px-8 py-6 h-auto shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:hover:scale-100 font-semibold"
+          className="bg-gradient-to-br from-primary via-primary to-accent hover:from-primary/95 hover:via-primary/90 hover:to-accent/95 text-primary-foreground px-8 py-6 h-auto shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 hover:scale-[1.03] disabled:opacity-50 disabled:hover:scale-100 font-semibold rounded-lg"
         >
           {isLoading ? (
             <>

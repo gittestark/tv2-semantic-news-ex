@@ -34,8 +34,8 @@ export function InsightsPanel({ insights }: InsightsPanelProps) {
       transition={{ duration: 0.6, delay: 0.2 }}
       className="space-y-5"
     >
-      <Card className="p-6 bg-gradient-to-br from-primary/10 via-primary/5 to-accent/8 border-2 border-primary/30 shadow-xl shadow-primary/10 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent/20 to-transparent rounded-full blur-3xl" />
+      <Card className="p-6 bg-gradient-to-br from-primary/8 via-primary/4 to-accent/6 border border-primary/30 shadow-lg shadow-primary/8 relative overflow-hidden rounded-xl">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent/15 to-transparent rounded-full blur-3xl" />
         <div className="relative">
           <div className="flex items-start gap-3 mb-4">
             <motion.div
@@ -57,7 +57,7 @@ export function InsightsPanel({ insights }: InsightsPanelProps) {
         </div>
       </Card>
 
-      <Card className="p-6 border-2 hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+      <Card className="p-6 border border-border/70 hover:border-primary/40 transition-all duration-300 hover:shadow-md rounded-xl">
         <div className="flex items-center gap-2.5 mb-4">
           <MagnifyingGlass size={22} weight="duotone" className="text-primary" />
           <h3 className="font-bold text-base">Tidligere vinkler</h3>
@@ -69,7 +69,7 @@ export function InsightsPanel({ insights }: InsightsPanelProps) {
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: idx * 0.1 }}
-              className="text-sm text-foreground/80 pl-4 border-l-3 border-primary/40 py-2 hover:border-primary hover:bg-primary/5 transition-all duration-200 rounded-r"
+              className="text-sm text-foreground/80 pl-4 border-l-2 border-primary/40 py-2 hover:border-primary hover:bg-primary/5 transition-all duration-200 rounded-r"
             >
               {angle}
             </motion.li>
@@ -77,7 +77,7 @@ export function InsightsPanel({ insights }: InsightsPanelProps) {
         </ul>
       </Card>
 
-      <Card className="p-6 border-2 border-accent/40 hover:border-accent/60 transition-all duration-300 hover:shadow-lg">
+      <Card className="p-6 border border-accent/40 hover:border-accent/60 transition-all duration-300 hover:shadow-md rounded-xl">
         <div className="flex items-center gap-2.5 mb-4">
           <Target size={22} weight="duotone" className="text-accent" />
           <h3 className="font-bold text-base">Mulige blinde vinkler</h3>
@@ -89,7 +89,7 @@ export function InsightsPanel({ insights }: InsightsPanelProps) {
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: idx * 0.1 }}
-              className="text-sm text-foreground/80 pl-4 border-l-3 border-accent/60 py-2 hover:border-accent hover:bg-accent/5 transition-all duration-200 rounded-r"
+              className="text-sm text-foreground/80 pl-4 border-l-2 border-accent/60 py-2 hover:border-accent hover:bg-accent/5 transition-all duration-200 rounded-r"
             >
               {spot}
             </motion.li>
@@ -97,7 +97,7 @@ export function InsightsPanel({ insights }: InsightsPanelProps) {
         </ul>
       </Card>
 
-      <Card className="p-6 border-2 hover:border-primary/40 transition-all duration-300 hover:shadow-lg bg-gradient-to-br from-background to-primary/5">
+      <Card className="p-6 border border-border/70 hover:border-primary/40 transition-all duration-300 hover:shadow-md bg-gradient-to-br from-background to-primary/5 rounded-xl">
         <div className="flex items-center gap-2.5 mb-4">
           <Lightbulb size={22} weight="duotone" className="text-accent" />
           <h3 className="font-bold text-base">Foreslåede nye vinkler</h3>
@@ -109,7 +109,7 @@ export function InsightsPanel({ insights }: InsightsPanelProps) {
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: idx * 0.1 }}
-              className="text-sm text-foreground/80 pl-4 border-l-3 border-accent/40 py-2 hover:border-accent hover:bg-accent/5 transition-all duration-200 rounded-r font-medium"
+              className="text-sm text-foreground/80 pl-4 border-l-2 border-accent/40 py-2 hover:border-accent hover:bg-accent/5 transition-all duration-200 rounded-r font-medium"
             >
               {angle}
             </motion.li>
@@ -117,7 +117,7 @@ export function InsightsPanel({ insights }: InsightsPanelProps) {
         </ul>
       </Card>
 
-      <Card className="p-6 border-2 hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+      <Card className="p-6 border border-border/70 hover:border-primary/40 transition-all duration-300 hover:shadow-md rounded-xl">
         <div className="flex items-center gap-2.5 mb-4">
           <Users size={22} weight="duotone" className="text-primary" />
           <h3 className="font-bold text-base">Brugte kilder</h3>
@@ -163,7 +163,7 @@ export function InsightsPanel({ insights }: InsightsPanelProps) {
       </Card>
 
       {insights.timeline && insights.timeline.length > 0 && (
-        <Card className="p-6 border-2 hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+        <Card className="p-6 border border-border/70 hover:border-primary/40 transition-all duration-300 hover:shadow-md rounded-xl">
           <div className="flex items-center gap-2.5 mb-5">
             <Clock size={22} weight="duotone" className="text-primary" />
             <h3 className="font-bold text-base">Tidslinje for dækning</h3>
@@ -193,7 +193,7 @@ export function InsightsPanel({ insights }: InsightsPanelProps) {
       )}
 
       {insights.contradictions && insights.contradictions.length > 0 && (
-        <Card className="p-6 border-2 border-destructive/40 hover:border-destructive/60 transition-all duration-300 hover:shadow-lg bg-destructive/5">
+        <Card className="p-6 border border-destructive/40 hover:border-destructive/60 transition-all duration-300 hover:shadow-md bg-destructive/5 rounded-xl">
           <div className="flex items-center gap-2.5 mb-4">
             <Warning size={22} weight="duotone" className="text-destructive" />
             <h3 className="font-bold text-base">Modsigelser at være opmærksom på</h3>
@@ -205,7 +205,7 @@ export function InsightsPanel({ insights }: InsightsPanelProps) {
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: idx * 0.1 }}
-                className="text-sm text-foreground/80 pl-4 border-l-3 border-destructive/50 py-2 hover:border-destructive hover:bg-destructive/10 transition-all duration-200 rounded-r font-medium"
+                className="text-sm text-foreground/80 pl-4 border-l-2 border-destructive/50 py-2 hover:border-destructive hover:bg-destructive/10 transition-all duration-200 rounded-r font-medium"
               >
                 {contradiction}
               </motion.li>

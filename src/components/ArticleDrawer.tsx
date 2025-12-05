@@ -33,7 +33,7 @@ export function ArticleDrawer({ article, open, onClose }: ArticleDrawerProps) {
 
   return (
     <Sheet open={open} onOpenChange={onClose}>
-      <SheetContent className="w-full sm:max-w-3xl bg-background/95 backdrop-blur-xl">
+      <SheetContent className="w-full sm:max-w-3xl bg-background/95 backdrop-blur-xl border-l border-border/70">
         <SheetHeader>
           <SheetTitle className="font-display text-3xl font-bold leading-tight pr-8 text-foreground">
             {article.title}
@@ -64,18 +64,18 @@ export function ArticleDrawer({ article, open, onClose }: ArticleDrawerProps) {
                 {article.byline}
               </motion.span>
               
-              <Badge variant="outline" className="text-xs uppercase font-bold tracking-wide border-2">
+              <Badge variant="outline" className="text-xs uppercase font-bold tracking-wide border">
                 <Folder size={16} className="mr-1.5" weight="duotone" />
                 {article.category}
               </Badge>
               
-              <Badge className="bg-gradient-to-r from-primary to-accent text-white shadow-lg">
+              <Badge className="bg-gradient-to-r from-primary to-accent text-white shadow-md">
                 <TrendUp size={16} className="mr-1.5" weight="bold" />
                 Relevans: {Math.round(article.relevanceScore * 100)}%
               </Badge>
             </div>
 
-            <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-6 rounded-2xl border-2 border-primary/20 shadow-lg">
+            <div className="bg-gradient-to-br from-primary/8 to-accent/8 p-6 rounded-xl border border-primary/20 shadow-sm">
               <p className="text-base md:text-lg leading-relaxed text-foreground font-semibold">
                 {article.excerpt}
               </p>
@@ -133,7 +133,7 @@ export function ArticleDrawer({ article, open, onClose }: ArticleDrawerProps) {
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: idx * 0.08 }}
-                        className="text-sm text-foreground/75 pl-5 border-l-4 border-primary/40 py-2 hover:border-primary hover:bg-primary/5 transition-all duration-200 rounded-r font-medium"
+                        className="text-sm text-foreground/75 pl-5 border-l-3 border-primary/40 py-2 hover:border-primary hover:bg-primary/5 transition-all duration-200 rounded-r font-medium"
                       >
                         {source}
                       </motion.li>
