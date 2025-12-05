@@ -54,6 +54,37 @@ function App() {
     setDrawerOpen(true)
   }
 
+  const exampleScenarios = [
+    {
+      title: "Udvikling over tid",
+      query: "Hvad har vi dækket om unges psykiske mistrivsel?",
+      icon: "📊",
+      description: "Find tidligere vinkler og spor udviklingen"
+    },
+    {
+      title: "Politisk kontekst",
+      query: "Klimapolitik og Danmarks EU-forpligtelser",
+      icon: "🏛️",
+      description: "Kortlæg debat og beslutningsforløb"
+    },
+    {
+      title: "Tværgående tema",
+      query: "Cyberangreb mod danske virksomheder og myndigheder",
+      icon: "🔒",
+      description: "Identificer mønstre og gennemgående kilder"
+    },
+    {
+      title: "Breaking follow-up",
+      query: "Infrastrukturproblemer med elbiler i Danmark",
+      icon: "⚡",
+      description: "Tjek hvad vi allerede ved om emnet"
+    }
+  ]
+
+  const handleExampleClick = (query: string) => {
+    handleSearch(query)
+  }
+
   return (
     <>
       <div className="min-h-screen flex flex-col">
@@ -92,6 +123,47 @@ function App() {
             </motion.div>
             
             <SearchBar onSearch={handleSearch} isLoading={isLoading} />
+
+            {!hasSearched && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="mt-8 max-w-4xl mx-auto"
+              >
+                <div className="flex items-center gap-2 mb-4">
+                  <Lightbulb size={20} weight="duotone" className="text-accent" />
+                  <p className="font-bold text-foreground text-sm uppercase tracking-wide">Prøv at søge efter:</p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {exampleScenarios.map((scenario, idx) => (
+                    <motion.button
+                      key={idx}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4 + idx * 0.1 }}
+                      onClick={() => handleExampleClick(scenario.query)}
+                      className="group bg-card/60 backdrop-blur-sm border-2 border-border/50 hover:border-primary/40 rounded-xl p-5 text-left transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 active:translate-y-0"
+                    >
+                      <div className="flex items-start gap-3">
+                        <span className="text-2xl flex-shrink-0">{scenario.icon}</span>
+                        <div className="flex-1 min-w-0">
+                          <p className="font-bold text-foreground mb-1 text-sm group-hover:text-primary transition-colors">
+                            {scenario.title}
+                          </p>
+                          <p className="text-muted-foreground text-xs mb-2 line-clamp-1">
+                            {scenario.description}
+                          </p>
+                          <p className="text-foreground/70 text-sm font-medium italic line-clamp-2 group-hover:text-primary/80 transition-colors">
+                            "{scenario.query}"
+                          </p>
+                        </div>
+                      </div>
+                    </motion.button>
+                  ))}
+                </div>
+              </motion.div>
+            )}
           </div>
         </header>
 

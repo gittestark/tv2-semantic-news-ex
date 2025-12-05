@@ -27,11 +27,11 @@ This is a search-focused tool with form input, results display, article detail v
 - **Success criteria**: All result fields display correctly, relevance scores are visible, content is readable
 
 ### Empty States
-- **Functionality**: Contextual messaging when no search has been performed or no results found
-- **Purpose**: Guide users on how to use the tool and provide feedback when searches yield nothing
-- **Trigger**: Initial page load or zero-result search response
-- **Progression**: User sees empty state → Reads guidance → Performs search
-- **Success criteria**: Clear, helpful messaging that doesn't feel like an error
+- **Functionality**: Contextual example search scenarios displayed in header before first search; helpful messaging when searches yield no results
+- **Purpose**: Guide users on how to use the tool with diverse, realistic journalism scenarios; provide feedback when searches yield nothing
+- **Trigger**: Initial page load (shows example scenarios) or zero-result search response (shows no results message)
+- **Progression**: User sees example scenarios → Clicks or types own search → Scenarios hide after first search
+- **Success criteria**: Clear, helpful scenarios that demonstrate tool capabilities; inspiring examples that cover different journalism workflows
 
 ### Article Detail Drawer
 - **Functionality**: Side drawer showing complete article with metadata, extracted sources, and full text
@@ -69,18 +69,19 @@ The design should evoke trust, intelligence, and clarity. This is a professional
 
 ## Color Selection
 
-A sophisticated palette centered on deep teals and warm accents, conveying both technological capability and editorial warmth.
+A TV2-inspired palette using red and blue as primary brand colors, conveying both authority and energy appropriate for a news organization.
 
-- **Primary Color**: Deep Teal (oklch(0.45 0.12 210)) - Represents intelligence, trust, and technological sophistication. Used for primary actions and key interactive elements.
-- **Secondary Colors**: 
-  - Slate backgrounds (oklch(0.96 0.01 240)) for subtle container differentiation
-  - Deep navy (oklch(0.25 0.04 250)) for text and headers, providing excellent readability
-- **Accent Color**: Warm Coral (oklch(0.70 0.15 35)) - Attention-grabbing highlight for search button, relevance indicators, and interactive states. Provides energetic contrast to the cool primary.
+- **Primary Color**: TV2 Red (oklch(0.42 0.20 15)) - Bold red representing the TV2 brand identity, trust, and journalistic authority. Used for primary actions, focus states, and key interactive elements.
+- **Secondary Color**: Deep Blue (oklch(0.45 0.18 250)) - Professional blue representing depth, credibility, and analytical capability. Used for secondary actions and supporting elements.
+- **Accent Color**: Bright Red-Orange (oklch(0.58 0.25 15)) - Energetic accent for hover states, highlights, and attention-grabbing elements like relevance indicators.
+- **Neutral Colors**: 
+  - Soft white/cream backgrounds (oklch(0.99 0 0)) for clean, distraction-free content display
+  - Muted slate (oklch(0.96 0.005 240)) for subtle container differentiation
 - **Foreground/Background Pairings**:
-  - Background (Soft White oklch(0.98 0 0)): Deep navy text (oklch(0.25 0.04 250)) - Ratio 12.1:1 ✓
-  - Primary Teal (oklch(0.45 0.12 210)): White text (oklch(1 0 0)) - Ratio 6.8:1 ✓
-  - Accent Coral (oklch(0.70 0.15 35)): Deep navy text (oklch(0.25 0.04 250)) - Ratio 5.2:1 ✓
-  - Card backgrounds (Slate oklch(0.96 0.01 240)): Deep navy text (oklch(0.25 0.04 250)) - Ratio 11.8:1 ✓
+  - Background (Soft White oklch(0.99 0 0)): Dark text (oklch(0.20 0.01 260)) - Ratio 15.8:1 ✓
+  - Primary Red (oklch(0.42 0.20 15)): White text (oklch(0.99 0 0)) - Ratio 7.2:1 ✓
+  - Accent Red-Orange (oklch(0.58 0.25 15)): White text (oklch(0.99 0 0)) - Ratio 4.8:1 ✓
+  - Secondary Blue (oklch(0.45 0.18 250)): White text (oklch(0.99 0 0)) - Ratio 6.5:1 ✓
 
 ## Font Selection
 
@@ -118,16 +119,18 @@ Animations should reinforce the sense of intelligent processing and smooth disco
 - **ScrollArea** (shadcn): Results list container for smooth scrolling
 
 **Customizations**:
-- Custom search icon animation using Phosphor icons (MagnifyingGlass)
-- Custom empty state illustration area using geometric shapes
-- Gradient background pattern using layered radial gradients in subtle teal/coral
-- Custom relevance score visualization (could be progress bar or numeric badge)
+- Custom animated logo icon using Phosphor icons (MagnifyingGlass with pulsing animation)
+- Example scenario cards with emoji icons, titles, descriptions, and clickable queries
+- Gradient background pattern using layered radial gradients in red/blue TV2 colors
+- Custom relevance score visualization with percentage badges
+- Scenarios displayed prominently in header, disappearing after first search for cleaner results view
 
 **States**:
-- **Search Button**: Default (coral), hover (darker coral + scale), active (pressed scale), disabled (muted)
-- **Search Input**: Default (subtle border), focus (teal ring + border), filled (maintains focus style), error (red ring)
-- **Result Cards**: Default (flat), hover (elevated shadow + border highlight), loading (skeleton with pulse)
-- **Badge**: High relevance (coral), medium relevance (teal), low relevance (muted)
+- **Search Button**: Default (red gradient), hover (darker red + scale + shadow), active (pressed scale), disabled (muted), loading (rotating sparkle icon)
+- **Search Input**: Default (subtle border), focus (red ring + border glow), filled (maintains content), disabled (muted)
+- **Result Cards**: Default (flat with subtle border), hover (elevated shadow + red border highlight + translate up), clicked (brief scale animation), loading (skeleton with pulse)
+- **Example Scenario Cards**: Default (white card with border), hover (red border + shadow + translate up), active (scale down)
+- **Badge**: High relevance (red), medium relevance (blue), low relevance (muted)
 
 **Icon Selection**:
 - MagnifyingGlass for search action
